@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overscroll-behavior: none;
+    overflow: hidden;
+  }
+}
+
+/* Custom glowing effects */
+.glow-cyan {
+  text-shadow: 0 0 20px rgba(77, 208, 225, 0.6), 0 0 40px rgba(77, 208, 225, 0.3);
+}
+
+.glow-orange {
+  text-shadow: 0 0 20px rgba(255, 119, 51, 0.6), 0 0 40px rgba(255, 119, 51, 0.3);
+}
+
+.glow-fire {
+  text-shadow: 0 0 20px rgba(255, 51, 51, 0.7), 0 0 40px rgba(255, 80, 0, 0.4);
+}
+
+.box-glow-cyan {
+  box-shadow: 0 10px 40px -10px rgba(77, 208, 225, 0.25), inset 0 0 20px rgba(77, 208, 225, 0.05);
+}
+
+.box-glow-orange {
+  box-shadow: 0 10px 40px -10px rgba(255, 119, 51, 0.25), inset 0 0 20px rgba(255, 119, 51, 0.05);
+}
+
+/* Elegant scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(77, 208, 225, 0.4);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(77, 208, 225, 0.7);
+}
+
+/* Subtle animated border rotation */
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 3s ease-in-out infinite;
+}
+
+/* Bounce animations for navigation */
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@keyframes bounceUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-bounce-down {
+  animation: bounceDown 1.8s ease-in-out infinite;
+}
+
+.animate-bounce-up {
+  animation: bounceUp 1.8s ease-in-out infinite;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "SU'rreal Piano SIMULATION - Büşra Su Haydar",
+  "description": "A multisensory, water-based piano simulation and generative art experience by Büşra Su Haydar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
