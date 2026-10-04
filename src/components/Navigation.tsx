@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronUp, ChevronDown, Compass, Volume2, VolumeX, X, Download, ExternalLink } from 'lucide-react';
+import { ChevronUp, ChevronDown, Compass, Volume2, VolumeX, X } from 'lucide-react';
 import { SECTIONS } from '../data/sectionsData';
 
 interface NavigationProps {
@@ -23,19 +23,6 @@ export const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const currentSection = SECTIONS[currentIndex];
-
-  const handleDownloadHTML = () => {
-    const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-    const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'surreal-piano-simulation.html';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <>
@@ -65,18 +52,8 @@ export const Navigation: React.FC<NavigationProps> = ({
           </span>
         </div>
 
-        {/* Right Actions - Padded and protected so Keşfet & İndir buttons are 100% visible */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 pr-1 sm:pr-3">
-          {/* Direct HTML Download Button */}
-          <button
-            onClick={handleDownloadHTML}
-            title="Bu web sayfasını HTML dosyası olarak bilgisayarına indir"
-            className="px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-cyan-950/40 hover:bg-cyan-900/60 border border-cyan-500/40 text-cyan-300 hover:text-white text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(77,208,225,0.4)]"
-          >
-            <Download className="w-3.5 h-3.5 text-cyan-300" />
-            <span className="hidden sm:inline">HTML İndir</span>
-          </button>
-
+        {/* Right Actions - Padded and protected so Keşfet button is 100% visible */}
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 pr-1 sm:pr-3">
           {/* Sound ambient toggle */}
           <button
             onClick={onToggleMusic}
@@ -215,29 +192,8 @@ export const Navigation: React.FC<NavigationProps> = ({
               })}
             </div>
 
-            {/* Quick Actions (Download HTML & Open in New Tab) */}
-            <div className="pt-4 pb-2 border-t border-white/10 space-y-2">
-              <button
-                onClick={handleDownloadHTML}
-                className="w-full py-2.5 px-4 rounded-xl bg-cyan-950/60 hover:bg-cyan-900 border border-cyan-500/50 hover:border-cyan-400 text-cyan-200 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-[0_0_15px_rgba(77,208,225,0.25)]"
-              >
-                <Download className="w-4 h-4 text-cyan-300" />
-                <span>Sayfayı HTML Olarak İndir (.html)</span>
-              </button>
-
-              <a
-                href="https://ais-pre-2ykhpzqw2xegosfijaztcv-679594448252.europe-west1.run.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-neutral-300 hover:text-white text-xs font-medium flex items-center justify-center gap-2 transition-all"
-              >
-                <ExternalLink className="w-4 h-4 text-neutral-400" />
-                <span>Yeni Sekmede Tam Ekran Aç</span>
-              </a>
-            </div>
-
             {/* Footer */}
-            <div className="pt-2 text-[11px] text-neutral-500 text-center">
+            <div className="pt-4 border-t border-white/10 text-[11px] text-neutral-500 text-center">
               Artwork & Simulation by Büşra Su Haydar
             </div>
           </div>
